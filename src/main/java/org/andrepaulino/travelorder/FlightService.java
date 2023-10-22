@@ -1,5 +1,10 @@
 package org.andrepaulino.travelorder;
 
+import java.time.temporal.ChronoUnit;
+
+import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
+import org.eclipse.microprofile.faulttolerance.Fallback;
+import org.eclipse.microprofile.faulttolerance.Timeout;
 import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 import jakarta.ws.rs.Consumes;
@@ -21,10 +26,23 @@ public interface FlightService {
     @GET
     @Path("findByTravelOrderId")
     @Produces(MediaType.APPLICATION_JSON)
+    @Timeout(unit = ChronoUnit.SECONDS, value = 2)
+    @Fallback(fallbackMethod = "findByTravelOrderIdFallback")
+    @CircuitBreaker(requestVolumeThreshold = 6, failureRatio = 0.5, delay = 5000, successThreshold = 3)
+
     public Flight findByTravelOrderId(@QueryParam("travelOrderId") long travelOrderId);
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Flight newFlight(Flight flight);
+
+    default Flight findByTravelOrderIdFallback(long travelOrderId) {
+        Flight flight = new Flight();
+        flight.setFromAirport("");
+        flight.setToAirport("");
+        flight.setTravelOrderId(travelOrderId);
+
+        return flight;
+    }
 }
