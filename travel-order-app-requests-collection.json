@@ -1,0 +1,67 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "travel-order-app",
+    "dateExported": "2023-10-22T00:46:31.821Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "df01a4b0-6a30-4fdb-9408-bb6d921578ad",
+            "colId": "3c1a1c26-005d-4dc5-a409-3ed1808e8244",
+            "containerId": "",
+            "name": "GET orders",
+            "url": "http://localhost:8082/travelorder/",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-10-22T00:45:59.939Z",
+            "modified": "2023-10-22T00:46:16.898Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2f46f687-c6af-40bd-92bd-2e1488391aa3",
+            "colId": "3c1a1c26-005d-4dc5-a409-3ed1808e8244",
+            "containerId": "",
+            "name": "GET travelorder/findById",
+            "url": "http://localhost:8082/travelorder/findById?id=1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-10-22T00:46:01.802Z",
+            "modified": "2023-10-22T00:46:20.938Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "1",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "8111d2b6-6bb5-4fcf-a94e-c52fbe90e96b",
+            "colId": "3c1a1c26-005d-4dc5-a409-3ed1808e8244",
+            "containerId": "",
+            "name": "POST newTravelOrder",
+            "url": "http://localhost:8082/travelorder",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-10-22T00:46:04.044Z",
+            "modified": "2023-10-22T00:46:28.236Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"fromAirport\": \"BSB\",\n  \"toAirport\": \"GIG\",\n  \"hotel\": \"2\",\n  \"nights\": \"5\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
