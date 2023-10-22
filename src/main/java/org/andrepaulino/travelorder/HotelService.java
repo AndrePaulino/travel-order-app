@@ -16,12 +16,12 @@ public interface HotelService {
     @GET
     @Path("findById")
     @Produces(MediaType.APPLICATION_JSON)
-    public Hotel findById(@QueryParam("id") Long id);
+    public Hotel findById(@QueryParam("id") long id);
 
     @GET
     @Path("findByTravelOrderId")
     @Produces(MediaType.APPLICATION_JSON)
-    public Hotel findByTravelOrderId(@QueryParam("travelOrderId") Long travelOrderId);
+    public Hotel findByTravelOrderId(@QueryParam("travelOrderId") long travelOrderId);
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
